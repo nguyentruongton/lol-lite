@@ -1,14 +1,16 @@
 import { Application, Assets, Container, Graphics, Rectangle, Sprite, Text, Texture } from 'pixi.js'
 import type { GameEngine } from './engine'
-import type { FeedbackEvent, Minion, Vec2 } from './types'
+import type { FeedbackEvent, Minion, Turret, Vec2 } from './types'
+
+const BASE_URL = import.meta.env.BASE_URL
 
 const ASSETS = {
-  map: '/assets/game/lane-master.webp',
-  heroSheet: '/assets/game/hero-sheet.webp',
-  blueMinionSheet: '/assets/game/minion-blue-sheet.webp',
-  redMinionSheet: '/assets/game/minion-red-sheet.webp',
-  blueTurret: '/assets/game/turret-blue.webp',
-  redTurret: '/assets/game/turret-red.webp',
+  map: `${BASE_URL}assets/game/lane-master.webp`,
+  heroSheet: `${BASE_URL}assets/game/hero-sheet.webp`,
+  blueMinionSheet: `${BASE_URL}assets/game/minion-blue-sheet.webp`,
+  redMinionSheet: `${BASE_URL}assets/game/minion-red-sheet.webp`,
+  blueTurret: `${BASE_URL}assets/game/turret-blue.webp`,
+  redTurret: `${BASE_URL}assets/game/turret-red.webp`,
 }
 
 const BLUE_TURRET_POSITION = { x: 0.5, y: 0.9 }
@@ -429,7 +431,7 @@ export class GameRenderer {
     this.placeTurret(this.redTurret, RED_TURRET_POSITION, unit * 0.43)
   }
 
-  private drawTurretHealth(graphics: Graphics, turret: any, unit: number, isBlue: boolean) {
+  private drawTurretHealth(graphics: Graphics, turret: Turret, unit: number, isBlue: boolean) {
     if (!turret.alive) {
       graphics.clear()
       return

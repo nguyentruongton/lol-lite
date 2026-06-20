@@ -33,7 +33,7 @@ function Hud({ snapshot, engine }: { snapshot: GameSnapshot; engine: GameEngine 
       </div>
 
       <div className="hero-panel">
-        <div className="hero-portrait"><img src="/assets/game/hero.webp" alt="Kiếm sĩ gió" /></div>
+        <div className="hero-portrait"><img src={`${import.meta.env.BASE_URL}assets/game/hero.webp`} alt="Kiếm sĩ gió" /></div>
         <div className="hero-level">6</div>
         <div className="health-wrap">
           <span className="health-value">620 / 620</span>
